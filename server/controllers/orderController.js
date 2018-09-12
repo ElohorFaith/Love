@@ -19,7 +19,28 @@ const getOneOrder = (req, res) => {
     message: 'Order successful',
   });
 };
+
+// post order
+const postOrder = (req, res) => {
+  if (!req.body.name || !req.body.price || !req.body.status || !req.body.Date) {
+    return {
+      error: 'Please fill in the required field',
+    };
+  }
+  const order = {
+    id: orders.length + 1,
+    name: req.params.name,
+    price: req.params.price,
+    status: req.params.status,
+    Date: req.params.Date,
+  };
+  return res.status(201).send({
+    newOrder: order,
+    message: 'Created Successfully',
+  });
+};
 export default {
   getOrders,
   getOneOrder,
+  postOrder,
 };
