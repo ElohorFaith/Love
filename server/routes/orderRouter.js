@@ -9,4 +9,7 @@ router.get('/orders', orderController.getOrders);
 // get an order
 router.get('/orders/:id', orderController.getOneOrder);
 
+// post an order
+router.post('/orders', orderController.postOrder);
+
 export default router;
