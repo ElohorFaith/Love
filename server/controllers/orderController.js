@@ -39,8 +39,33 @@ const postOrder = (req, res) => {
     message: 'Created Successfully',
   });
 };
+
+// edit an order
+const editAnOrder = (req, res) => {
+  const singleOrder = orders.find(order => order.id === parseInt(req.params.id, 10));
+  if (!singleOrder) {
+    res.status(404).send({
+      error: 'The order with the given id not found',
+    });
+  }
+  // edit an order
+  const updatedOrder = {
+    id: singleOrder.id,
+    name: req.body.name || singleOrder.name,
+    price: req.body.price || singleOrder.price,
+    status: req.body.status || singleOrder.status,
+    Date: req.body.Date || singleOrder.Date,
+  };
+
+  // return edited order
+  res.status(200).send({
+    updatedOrder,
+    message: 'Order successful',
+  });
+};
 export default {
   getOrders,
   getOneOrder,
   postOrder,
+  editAnOrder,
 };

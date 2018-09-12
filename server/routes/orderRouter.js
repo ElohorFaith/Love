@@ -12,4 +12,7 @@ router.get('/orders/:id', orderController.getOneOrder);
 // post an order
 router.post('/orders', orderController.postOrder);
 
+// edit an order
+router.put('/orders/:id', orderController.editOneOrder);
+
 export default router;
